@@ -5,12 +5,12 @@ public class Plate {
         public Plate(int food) {
             this.food = food;
         }
-        public void decreaseFood(int n,boolean satiety) {
+        public void decreaseFood(int n,boolean a) {
             if (n>food)
                 System.out.println("Food isn't enough");
             else {
                 food -= n;
-                 = true;
+                 a = true;
             }
         }
         public void info() {
