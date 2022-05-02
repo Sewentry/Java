@@ -12,7 +12,7 @@ public class HomeWorkApp3 {
         int [] arr2 = new int[]{ 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
         int [][] arr3 = new int [5][5];
         int [] arr4 = new int[]{2, 2, 2, 1, 2, 2, 10, 1};
-        int [] arr5 = new int[]{1, 2, 3};
+        int [] arr5 = new int[]{3,5,6,1};
         for (int i = 0; i<11;i++) {
             int value = random.nextInt(2);
             arr[i]=value;
@@ -28,7 +28,7 @@ public class HomeWorkApp3 {
         findMaxElement(arr1);
         findMinElement(arr2);
         checkEquilibriumArray(arr4);
-        cyclicShiftArray(arr5,1);
+        cyclicShiftArray(arr5,-2);
         System.out.println(Arrays.toString(arr5));
 
 
@@ -106,11 +106,11 @@ public class HomeWorkApp3 {
         }
             return false;
     }
-    public static int cyclicShiftArray (int [] arr, int shift)
+    public static int[] cyclicShiftArray (int [] arr, int shift)
     {
         if(shift==0)
         {
-            return arr[arr.length-1];
+            return arr;
         }
 
             if (shift>0)
@@ -130,24 +130,10 @@ public class HomeWorkApp3 {
                     arr[1]=store;
                 }
             }
-            else
-            {
-                if (Math.abs(shift)>arr.length)
-                {
-                    shift=shift+arr.length;
-                }
-                for (int i = 0;i>shift; i--)
-                {
-                    int store = arr[arr.length-1];
-                    arr[arr.length-1]=arr[0];
-                    for(int j=1; j<arr.length-1; j++)
-                    {
-                        arr[j-1]=arr[j-2];
-                    }
-                    arr[arr.length-2]=store;
-                }
+            else {
+                cyclicShiftArray(arr, arr.length - shift);
             }
-        return arr[arr.length-1];
+        return arr;
     }
 }
 
